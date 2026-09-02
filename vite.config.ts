@@ -11,9 +11,4 @@ export default defineConfig({
       '@': path.resolve(import.meta.dirname, './src'),
     },
   },
-  build: {
-    // GitHub Pages serves this repo straight from main, so the build output
-    // lives in a committed /docs folder instead of the gitignored /dist.
-    outDir: 'docs',
-  },
 })

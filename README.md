@@ -46,25 +46,17 @@ npm run lint       # oxlint
 
 ## Desplegar
 
-Se publica en **GitHub Pages**, en `https://kilorito2.github.io/`. GitHub Pages sirve el sitio
-directo desde la carpeta `docs/` de la rama `main` (así que, a diferencia del típico `dist/`, esa
-carpeta sí se commitea). Para publicar un cambio:
+Se publica en **Vercel**, conectado a este repo de GitHub: cada `git push` a `main` dispara un
+build y deploy automático, sin pasos manuales. Para publicar un cambio, alcanza con:
 
 ```bash
-npm run build   # regenera docs/ con los cambios
 git add -A
 git commit -m "mensaje del cambio"
 git push
 ```
 
-y en 1-2 minutos el sitio queda actualizado. `docs/.nojekyll` le dice a GitHub que sirva los
-archivos tal cual, sin procesarlos con Jekyll.
+y en menos de un minuto el sitio queda actualizado. `npm run build` sigue sirviendo para probar el
+build de producción en local antes de subir (`npm run preview` lo sirve en `http://localhost:4173`).
 
-> **Nota:** este repo tenía preparado un despliegue automático vía GitHub Actions
-> (compilar y publicar en cada push, sin el paso manual de `npm run build`), pero la cuenta de
-> GitHub tiene una traba de facturación que bloquea correr Actions. Cuando eso se resuelva
-> (revisando [github.com/settings/billing](https://github.com/settings/billing)), se puede volver
-> a activar sin problema.
-
-Al ser un sitio estático, también funcionaría igual en [Vercel](https://vercel.com/) o
-[Netlify](https://netlify.com/) si en algún momento preferís cambiar de hosting.
+Al ser un sitio estático, también funcionaría igual en [Netlify](https://netlify.com/) o
+[GitHub Pages](https://pages.github.com/) si en algún momento preferís cambiar de hosting.
