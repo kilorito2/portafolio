@@ -156,7 +156,7 @@ export const portfolio: PortfolioData = {
       // TODO: reemplazar por la URL del deploy en Vercel una vez publicado (ej. huso-demo.vercel.app).
       href: undefined,
       repo: 'https://github.com/kilorito2/Open-source-scheduling-SaaS',
-      image: undefined,
+      image: '/projects/huso.jpg',
     },
     {
       id: 'traza',
@@ -167,7 +167,7 @@ export const portfolio: PortfolioData = {
       // TODO: reemplazar por la URL del deploy en Vercel una vez publicado (ej. traza-demo.vercel.app).
       href: undefined,
       repo: 'https://github.com/kilorito2/Climate-ESG-productivity-dashboard',
-      image: undefined,
+      image: '/projects/traza.jpg',
     },
   ],
 
