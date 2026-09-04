@@ -117,30 +117,6 @@ export const portfolio: PortfolioData = {
 
   projects: [
     {
-      id: 'huso',
-      name: 'Huso',
-      description:
-        'SaaS open source de agenda pública para freelancers y equipos chicos: reservas online, disponibilidad, zonas horarias y emails automáticos de confirmación/recordatorio.',
-      tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
-      // TODO: reemplazar por la URL del deploy en Vercel una vez publicado (ej. huso-demo.vercel.app).
-      href: undefined,
-      repo: 'https://github.com/kilorito2/Open-source-scheduling-SaaS',
-      image: undefined,
-      featured: true,
-    },
-    {
-      id: 'traza',
-      name: 'Traza',
-      description:
-        'Panel de productividad climática y ESG para pymes: centraliza energía, residuos y viajes en un solo lugar, calcula un score ESG y sugiere recomendaciones accionables.',
-      tags: ['Next.js', 'TypeScript', 'Supabase', 'Recharts'],
-      // TODO: reemplazar por la URL del deploy en Vercel una vez publicado (ej. traza-demo.vercel.app).
-      href: undefined,
-      repo: 'https://github.com/kilorito2/Climate-ESG-productivity-dashboard',
-      image: undefined,
-      featured: true,
-    },
-    {
       id: 'terra',
       name: 'Terra',
       description:
@@ -170,6 +146,28 @@ export const portfolio: PortfolioData = {
       href: undefined,
       repo: 'https://github.com/kilorito2/Vex',
       image: '/projects/vex.jpg',
+    },
+    {
+      id: 'huso',
+      name: 'Huso',
+      description:
+        'SaaS open source de agenda pública para freelancers y equipos chicos: reservas online, disponibilidad, zonas horarias y emails automáticos de confirmación/recordatorio.',
+      tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+      // TODO: reemplazar por la URL del deploy en Vercel una vez publicado (ej. huso-demo.vercel.app).
+      href: undefined,
+      repo: 'https://github.com/kilorito2/Open-source-scheduling-SaaS',
+      image: undefined,
+    },
+    {
+      id: 'traza',
+      name: 'Traza',
+      description:
+        'Panel de productividad climática y ESG para pymes: centraliza energía, residuos y viajes en un solo lugar, calcula un score ESG y sugiere recomendaciones accionables.',
+      tags: ['Next.js', 'TypeScript', 'Supabase', 'Recharts'],
+      // TODO: reemplazar por la URL del deploy en Vercel una vez publicado (ej. traza-demo.vercel.app).
+      href: undefined,
+      repo: 'https://github.com/kilorito2/Climate-ESG-productivity-dashboard',
+      image: undefined,
     },
   ],
 
