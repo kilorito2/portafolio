@@ -30,6 +30,8 @@ export interface Project {
   /** Ruta de una captura del proyecto, colocada en /public. Ej: '/projects/mi-proyecto.jpg' */
   image?: string
   featured?: boolean
+  /** Categoría para el filtro de la sección Proyectos. */
+  category: 'Landing' | 'Full Stack' | 'Portafolio'
 }
 
 export interface ExperienceItem {
@@ -101,7 +103,7 @@ export const portfolio: PortfolioData = {
       'Tengo experiencia académica y práctica desarrollando proyectos con HTML, CSS, JavaScript, Python y otras tecnologías. Busco seguir creciendo profesionalmente y participar en proyectos donde pueda aportar y adquirir experiencia.',
     ],
     stats: [
-      { label: 'Proyectos destacados', value: '5' },
+      { label: 'Proyectos publicados', value: '12' },
       { label: 'Stack principal', value: 'React' },
       { label: 'Disponibilidad', value: 'Full-time' },
     ],
@@ -111,8 +113,10 @@ export const portfolio: PortfolioData = {
   // Vite, Motion) lo confirmé revisando el código de tus 3 repos, para no poner
   // tecnologías que en realidad no usaste.
   skills: [
-    { label: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML', 'CSS'] },
-    { label: 'Lenguajes y herramientas', items: ['Python', 'Vite', 'Git', 'GitHub'] },
+    { label: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'] },
+    { label: 'Animación y 3D', items: ['GSAP', 'Motion', 'Lenis', 'Three.js'] },
+    { label: 'Backend y datos', items: ['Supabase', 'Python'] },
+    { label: 'Herramientas', items: ['Vite', 'Vitest', 'Playwright', 'Git', 'GitHub', 'Vercel'] },
   ],
 
   projects: [
@@ -122,20 +126,88 @@ export const portfolio: PortfolioData = {
       description:
         'Landing page inmersiva sobre cambio climático: estadísticas verificadas, causas de la crisis y acciones concretas para impulsar energías renovables y el cuidado ambiental.',
       tags: ['React', 'TypeScript', 'Tailwind CSS', 'Motion'],
-      href: undefined,
+      href: 'https://terra-two-bice.vercel.app',
       repo: 'https://github.com/kilorito2/Terra',
       image: '/projects/terra.jpg',
       featured: true,
+      category: 'Landing',
     },
     {
-      id: 'lanitas-tejidas',
-      name: 'Lanitas Tejidas',
+      id: 'hinode',
+      name: 'HINODE',
       description:
-        'Landing page para un emprendimiento de tejidos a crochet hechos a mano: amigurumis, gorros, mantas y accesorios, con galería de productos y contacto directo por WhatsApp e Instagram.',
-      tags: ['React', 'Vite', 'Tailwind CSS'],
-      href: undefined,
-      repo: 'https://github.com/kilorito2/Lanitas-Tejidas',
-      image: '/projects/lanitas-tejidas.jpg',
+        'Landing scrollytelling para una marca ficticia de silencio y rituales diarios: hero fijado con dolly-zoom del sol, camino de montaña que se dibuja al scrollear y campo de nieve en Three.js.',
+      tags: ['React', 'TypeScript', 'GSAP', 'Three.js', 'Tailwind CSS'],
+      href: 'https://hinode-ashy.vercel.app',
+      repo: 'https://github.com/kilorito2/hinode',
+      image: '/projects/hinode.jpg',
+      category: 'Landing',
+    },
+    {
+      id: 'armand-de-brignac-brut',
+      name: 'Armand de Brignac · Brut',
+      description:
+        'Landing conceptual contada con el scroll: la caja laqueada se abre, la botella aparece vestida de oro y las piezas se ensamblan en la foto final. Todo se renderiza en local, sin requests externos. Proyecto de portfolio, no afiliado a la marca.',
+      tags: ['React', 'TypeScript', 'GSAP', 'Three.js', 'Tailwind CSS'],
+      href: 'https://armand-de-brignac-brut.vercel.app',
+      repo: 'https://github.com/kilorito2/armand-de-brignac-brut',
+      image: '/projects/armand-de-brignac-brut.jpg',
+      category: 'Landing',
+    },
+    {
+      id: 'nocturne',
+      name: 'NOCTURNE',
+      description:
+        'Concept piece de portfolio (no oficial): landing scrollytelling para un bolso de lujo, con animaciones GSAP, pantalla de carga con contador y assets optimizados vía Cloudinary.',
+      tags: ['React', 'TypeScript', 'GSAP', 'Three.js', 'Tailwind CSS'],
+      href: 'https://nocturne-delta-brown.vercel.app',
+      repo: 'https://github.com/kilorito2/nocturne',
+      image: '/projects/nocturne.jpg',
+      category: 'Landing',
+    },
+    {
+      id: 'velmont-grand-hotel',
+      name: 'Velmont Grand Hotel',
+      description:
+        'Sitio de un hotel de lujo en la Côte d\'Azur: hero a pantalla completa, buscador de reservas y secciones de estancia, gastronomía, wellness y experiencias.',
+      tags: ['HTML', 'CSS', 'JavaScript'],
+      href: 'https://velmont-grand-hotel.vercel.app',
+      repo: 'https://github.com/kilorito2/velmont-grand-hotel',
+      image: '/projects/velmont-grand-hotel.jpg',
+      category: 'Landing',
+    },
+    {
+      id: 'altitude-landing',
+      name: 'Altitude',
+      description:
+        'Landing de una plataforma de datos satelitales y de sensores procesados en tiempo real para clima, agricultura y logística, con hero cinematográfico y sección de arquitectura.',
+      tags: ['Vite', 'JavaScript', 'CSS'],
+      href: 'https://altitude-landing-iota.vercel.app',
+      repo: 'https://github.com/kilorito2/altitude-landing',
+      image: '/projects/altitude-landing.jpg',
+      category: 'Landing',
+    },
+    {
+      id: 'ia-landing-page',
+      name: 'Programming, Rewritten by AI',
+      description:
+        'Landing editorial sobre cómo la IA está cambiando la programación, con tipografía pixelada, fondo generativo y secciones de investigación e insights.',
+      tags: ['HTML', 'CSS', 'JavaScript'],
+      href: 'https://ia-landing-page-green.vercel.app',
+      repo: 'https://github.com/kilorito2/ia-landing-page',
+      image: '/projects/ia-landing-page.jpg',
+      category: 'Landing',
+    },
+    {
+      id: 'portafolio-camarografo',
+      name: 'Emilia Duarte · Foto & Cine',
+      description:
+        'Portafolio para una fotógrafa y camarógrafa: intro con scroll fijado donde el video se reproduce mientras el texto se revela, y galería de trabajos con animaciones GSAP.',
+      tags: ['React', 'GSAP', 'Lenis'],
+      href: 'https://portafolio-camarografo.vercel.app',
+      repo: 'https://github.com/kilorito2/portafolio-camarografo',
+      image: '/projects/portafolio-camarografo.jpg',
+      category: 'Portafolio',
     },
     {
       id: 'vex',
@@ -143,9 +215,21 @@ export const portfolio: PortfolioData = {
       description:
         'Landing page sobre exploración y conservación del océano profundo: presenta una organización que financia expediciones, tecnología de investigación y datos abiertos frente al avance de la minería del lecho marino.',
       tags: ['React', 'TypeScript', 'Tailwind CSS'],
-      href: undefined,
+      href: 'https://vex-eight-liart.vercel.app',
       repo: 'https://github.com/kilorito2/Vex',
       image: '/projects/vex.jpg',
+      category: 'Landing',
+    },
+    {
+      id: 'lanitas-tejidas',
+      name: 'Lanitas Tejidas',
+      description:
+        'Landing page para un emprendimiento de tejidos a crochet hechos a mano: amigurumis, gorros, mantas y accesorios, con galería de productos y contacto directo por WhatsApp e Instagram.',
+      tags: ['React', 'Vite', 'Tailwind CSS'],
+      href: 'https://lanitas-tejidas.vercel.app',
+      repo: 'https://github.com/kilorito2/Lanitas-Tejidas',
+      image: '/projects/lanitas-tejidas.jpg',
+      category: 'Landing',
     },
     {
       id: 'huso',
@@ -153,10 +237,9 @@ export const portfolio: PortfolioData = {
       description:
         'SaaS open source de agenda pública para freelancers y equipos chicos: reservas online, disponibilidad, zonas horarias y emails automáticos de confirmación/recordatorio.',
       tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
-      // TODO: reemplazar por la URL del deploy en Vercel una vez publicado (ej. huso-demo.vercel.app).
-      href: undefined,
       repo: 'https://github.com/kilorito2/Open-source-scheduling-SaaS',
       image: '/projects/huso.jpg',
+      category: 'Full Stack',
     },
     {
       id: 'traza',
@@ -164,10 +247,9 @@ export const portfolio: PortfolioData = {
       description:
         'Panel de productividad climática y ESG para pymes: centraliza energía, residuos y viajes en un solo lugar, calcula un score ESG y sugiere recomendaciones accionables.',
       tags: ['Next.js', 'TypeScript', 'Supabase', 'Recharts'],
-      // TODO: reemplazar por la URL del deploy en Vercel una vez publicado (ej. traza-demo.vercel.app).
-      href: undefined,
       repo: 'https://github.com/kilorito2/Climate-ESG-productivity-dashboard',
       image: '/projects/traza.jpg',
+      category: 'Full Stack',
     },
   ],
 
