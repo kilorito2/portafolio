@@ -7,22 +7,34 @@
 @import "@fontsource/manrope/500.css";
 @import "@fontsource/manrope/600.css";
 @import "@fontsource/manrope/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
 @import "@fontsource/jetbrains-mono/500.css";
 
-/* Class-based dark mode: toggled via .dark on <html>, see src/hooks/useTheme.ts */
-@custom-variant dark (&:where(.dark, .dark *));
-
+/*
+ * Kilorito — identidad visual única, dark-only e intencional.
+ * Negro profundo + gris carbón + blanco roto + un solo acento
+ * azul eléctrico, usado con moderación (glow, líneas, hover).
+ */
 @theme {
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-ink: #050608;
+  --color-ink-2: #0a0b0e;
+  --color-carbon: #121319;
+  --color-carbon-2: #1a1c24;
+  --color-bone: #f3f2ee;
+  --color-mist: #9a9ca6;
+  --color-mist-dim: #5b5d66;
+  --color-line: rgba(243, 242, 238, 0.09);
+  --color-line-strong: rgba(243, 242, 238, 0.18);
+  --color-electric: #3d7bff;
+  --color-electric-soft: #86a9ff;
+  --color-electric-dim: rgba(61, 123, 255, 0.14);
 }
 
 :root {
-  color-scheme: light;
-}
-
-.dark {
   color-scheme: dark;
 }
 
@@ -30,17 +42,24 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Lenis takes over scroll physics; native smooth-scroll would fight it. */
+html.lenis {
+  scroll-behavior: auto;
+}
+
 body {
-  @apply bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 font-sans antialiased;
+  @apply bg-ink font-sans text-bone antialiased;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01" 1;
 }
 
 ::selection {
-  @apply bg-orange-500/20 text-zinc-900 dark:text-zinc-50;
+  background: var(--color-electric-dim);
+  color: var(--color-bone);
 }
 
 :focus-visible {
-  @apply outline-2 outline-orange-500 outline-offset-2 rounded-sm;
+  @apply rounded-sm outline-2 outline-offset-2 outline-electric;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -61,4 +80,52 @@ body {
   .container-page {
     @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
   }
+
+  /* Tabular numerals for stats, years, and other data-like figures. */
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/*
+ * Grain overlay: a fixed, pointer-events-none noise layer that keeps the
+ * dark surfaces from feeling flat and digital. Extremely subtle on purpose.
+ */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Atmospheric, blurred glow blobs used behind hero/section content. */
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+/* Faint technical dot-grid, faded toward the edges so it reads as texture, not a pattern. */
+.dot-grid {
+  background-image: radial-gradient(var(--color-line-strong) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent);
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2.4s ease-in-out infinite;
 }

@@ -8,13 +8,13 @@ interface ButtonProps extends ComponentPropsWithoutRef<'a'> {
 }
 
 const base =
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-sm font-semibold transition duration-300 ease-out active:scale-[0.98]'
+  'group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]'
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    'bg-zinc-900 text-zinc-50 hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200',
+    'bg-bone text-ink hover:bg-electric-soft hover:shadow-[0_0_0_1px_var(--color-electric-soft),0_12px_32px_-12px_var(--color-electric)]',
   secondary:
-    'border border-zinc-300 text-zinc-900 hover:border-zinc-900 hover:bg-zinc-900 hover:text-zinc-50 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-50 dark:hover:bg-zinc-50 dark:hover:text-zinc-900',
+    'border border-line text-bone hover:border-electric-soft hover:bg-electric-dim hover:text-electric-soft',
 }
 
 /** Every call-to-action on the site renders through here, so shape and motion stay identical. */

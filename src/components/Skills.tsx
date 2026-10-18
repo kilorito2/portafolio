@@ -1,33 +1,38 @@
+import { CodeSimple } from '@phosphor-icons/react'
 import { Reveal } from '@/components/Reveal'
 import { SectionHeading } from '@/components/SectionHeading'
 import { portfolio } from '@/data/portfolio'
+import { TECH_ICONS } from '@/lib/techIcons'
 
 export function Skills() {
   if (portfolio.skills.length === 0) return null
 
   return (
-    <section id="habilidades" className="border-t border-zinc-200 py-24 sm:py-32 dark:border-zinc-800">
+    <section id="habilidades" className="border-t border-line py-24 sm:py-32">
       <div className="container-page">
-        <Reveal>
-          <SectionHeading title="Habilidades" description="Con qué trabajo día a día." />
-        </Reveal>
+        <SectionHeading index="03" eyebrow="Stack" title="Tech Stack" description="Con qué trabajo día a día." />
 
-        <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-x-8 gap-y-10">
-          {portfolio.skills.map((group, index) => (
-            <Reveal key={group.label} delay={index * 0.06} className="border-t border-zinc-200 pt-6 dark:border-zinc-800">
-              <h3 className="font-display text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-                {group.label}
-              </h3>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full border border-zinc-200 px-3 py-1.5 font-mono text-sm text-zinc-700 dark:border-zinc-800 dark:text-zinc-300"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {portfolio.skills.map((group, groupIndex) => (
+            <Reveal key={group.label} delay={groupIndex * 0.08}>
+              <div className="h-full rounded-2xl border border-line bg-carbon/40 p-6">
+                <h3 className="font-mono text-xs tracking-[0.15em] text-mist-dim uppercase">{group.label}</h3>
+                <ul className="mt-5 flex flex-wrap gap-2.5">
+                  {group.items.map((item) => {
+                    const Icon = TECH_ICONS[item] ?? CodeSimple
+                    return (
+                      <li key={item}>
+                        <span className="group inline-flex items-center gap-2 rounded-xl border border-line bg-ink-2 px-3 py-2 text-sm text-bone transition-all duration-300 hover:-translate-y-0.5 hover:border-electric-soft hover:bg-electric-dim">
+                          <Icon
+                            className="h-4 w-4 text-mist transition-colors duration-300 group-hover:text-electric-soft"
+                          />
+                          {item}
+                        </span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
             </Reveal>
           ))}
         </div>

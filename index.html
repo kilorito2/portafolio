@@ -4,23 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#18181b" />
+    <meta name="theme-color" content="#050608" />
     <meta
       name="description"
-      content="Portafolio profesional: proyectos, experiencia y habilidades como desarrollador/a de software."
+      content="Kilorito — Luciano Rodríguez López, desarrollador full stack. Proyectos, experiencia y stack técnico."
     />
-    <title>Portafolio</title>
-    <script>
-      // Runs before paint to avoid a flash of the wrong theme.
-      (function () {
-        try {
-          var stored = localStorage.getItem('theme');
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var isDark = stored ? stored === 'dark' : prefersDark;
-          document.documentElement.classList.toggle('dark', isDark);
-        } catch (e) {}
-      })();
-    </script>
+    <meta property="og:title" content="Kilorito — Luciano Rodríguez López" />
+    <meta
+      property="og:description"
+      content="Desarrollador full stack construyendo experiencias digitales con React y TypeScript."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/avatar.jpg" />
+    <title>Kilorito — Luciano Rodríguez López</title>
   </head>
   <body>
     <div id="root"></div>

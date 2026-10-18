@@ -32,7 +32,7 @@ export function SocialIconLink({ link, size = 'md' }: SocialIconLinkProps) {
       rel={isExternal ? 'noreferrer' : undefined}
       aria-label={link.label}
       title={link.label}
-      className={`flex ${wrapper} items-center justify-center rounded-full border border-zinc-200 text-zinc-600 transition-colors duration-300 hover:border-zinc-900 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-50 dark:hover:text-zinc-50`}
+      className={`flex ${wrapper} items-center justify-center rounded-full border border-line text-mist transition-all duration-300 hover:-translate-y-0.5 hover:border-electric-soft hover:text-electric-soft`}
     >
       <IconComponent size={icon} weight="regular" />
     </a>

@@ -1,17 +1,39 @@
+import { Reveal } from '@/components/Reveal'
+
 interface SectionHeadingProps {
+  index: string
+  eyebrow: string
   title: string
   description?: string
   align?: 'left' | 'center'
 }
 
-export function SectionHeading({ title, description, align = 'left' }: SectionHeadingProps) {
+/** Editorial section header: a mono index/eyebrow line over an oversized display title. */
+export function SectionHeading({ index, eyebrow, title, description, align = 'left' }: SectionHeadingProps) {
   return (
-    <div className={`max-w-2xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-balance text-zinc-900 sm:text-4xl dark:text-zinc-50">
-        {title}
-      </h2>
+    <div className={align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'}>
+      <Reveal>
+        <div
+          className={`flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-mist-dim uppercase ${
+            align === 'center' ? 'justify-center' : ''
+          }`}
+        >
+          <span className="text-electric-soft">{index}</span>
+          <span aria-hidden="true" className="h-px w-8 bg-line-strong" />
+          <span>{eyebrow}</span>
+        </div>
+      </Reveal>
+
+      <Reveal delay={0.06}>
+        <h2 className="mt-4 text-balance font-display text-4xl font-semibold tracking-tight text-bone sm:text-5xl">
+          {title}
+        </h2>
+      </Reveal>
+
       {description ? (
-        <p className="mt-3 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">{description}</p>
+        <Reveal delay={0.1}>
+          <p className="mt-4 text-base leading-relaxed text-pretty text-mist">{description}</p>
+        </Reveal>
       ) : null}
     </div>
   )

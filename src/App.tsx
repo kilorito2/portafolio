@@ -8,6 +8,7 @@ import { Navbar } from '@/components/Navbar'
 import { Projects } from '@/components/Projects'
 import { Skills } from '@/components/Skills'
 import { portfolio } from '@/data/portfolio'
+import { destroyLenis, initLenis } from '@/lib/lenis'
 import { stripBrackets } from '@/lib/text'
 
 function App() {
@@ -20,15 +21,21 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    initLenis()
+    return () => destroyLenis()
+  }, [])
+
   return (
     <>
+      <div className="grain-overlay" aria-hidden="true" />
       <Navbar />
       <main>
         <Hero />
         <About />
+        <Journey />
         <Skills />
         <Projects />
-        <Journey />
         <Contact />
       </main>
       <Footer />

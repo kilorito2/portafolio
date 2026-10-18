@@ -1,76 +1,106 @@
+import { useReducedMotion, motion } from 'motion/react'
 import { Reveal } from '@/components/Reveal'
 import { SectionHeading } from '@/components/SectionHeading'
 import { portfolio } from '@/data/portfolio'
 
-export function Journey() {
-  const hasExperience = portfolio.experience.length > 0
-  const hasEducation = portfolio.education.length > 0
+interface TimelineEntry {
+  id: string
+  kind: 'education' | 'experience'
+  title: string
+  org: string
+  period?: string
+  detail?: string[]
+}
 
-  if (!hasExperience && !hasEducation) return null
+const entries: TimelineEntry[] = [
+  ...portfolio.education.map((item) => ({
+    id: `edu-${item.title}`,
+    kind: 'education' as const,
+    title: item.title,
+    org: item.institution,
+    period: item.period,
+  })),
+  ...portfolio.experience.map((item) => ({
+    id: `exp-${item.role}-${item.company}`,
+    kind: 'experience' as const,
+    title: item.role,
+    org: item.company,
+    period: item.period,
+    detail: item.highlights,
+  })),
+]
+
+const KIND_LABEL: Record<TimelineEntry['kind'], string> = {
+  education: 'Formación',
+  experience: 'Experiencia',
+}
+
+export function Journey() {
+  const reduce = useReducedMotion()
+
+  if (entries.length === 0) return null
 
   return (
-    <section id="trayectoria" className="border-t border-zinc-200 py-24 sm:py-32 dark:border-zinc-800">
+    <section id="trayectoria" className="border-t border-line py-24 sm:py-32">
       <div className="container-page">
-        <Reveal>
-          <SectionHeading title="Trayectoria" />
-        </Reveal>
+        <SectionHeading
+          index="02"
+          eyebrow="Trayectoria"
+          title="Educación y experiencia"
+          description="El camino hasta acá: lo que estudio y los roles donde apliqué lo aprendido."
+        />
 
-        <div
-          className={`mt-12 grid grid-cols-1 gap-12 ${
-            hasExperience && hasEducation ? 'lg:grid-cols-[1.6fr_1fr]' : ''
-          }`}
-        >
-          {hasExperience ? (
-            <Reveal delay={0.06}>
-              <h3 className="font-display text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-                Experiencia
-              </h3>
-              <ol className="mt-6 space-y-8">
-                {portfolio.experience.map((item) => (
-                  <li key={`${item.company}-${item.role}`} className="relative border-l border-zinc-200 pl-6 dark:border-zinc-800">
-                    <span
-                      className="absolute top-1.5 -left-[5px] h-2.5 w-2.5 rounded-full bg-zinc-900 dark:bg-zinc-50"
-                      aria-hidden="true"
-                    />
-                    <p className="font-semibold text-zinc-900 dark:text-zinc-50">{item.role}</p>
-                    <p className="mt-0.5 font-mono text-sm text-zinc-500 dark:text-zinc-400">
-                      {item.period ? `${item.company} · ${item.period}` : item.company}
-                    </p>
-                    {item.highlights.length > 0 ? (
-                      <ul className="mt-2 space-y-1">
-                        {item.highlights.map((highlight) => (
-                          <li
-                            key={highlight}
-                            className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
-                          >
-                            {highlight}
+        <div className="relative mt-16 pl-8 sm:pl-10">
+          <div
+            className="absolute top-1 bottom-1 left-[3px] w-px bg-line sm:left-[5px]"
+            aria-hidden="true"
+          />
+          <motion.div
+            className="absolute top-1 left-[3px] w-px origin-top bg-gradient-to-b from-electric-soft to-electric/20 sm:left-[5px]"
+            initial={reduce ? false : { scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            style={{ height: 'calc(100% - 0.5rem)' }}
+          />
+
+          <ol className="space-y-10">
+            {entries.map((entry, index) => (
+              <Reveal key={entry.id} delay={index * 0.08}>
+                <li className="group relative">
+                  <span
+                    className="absolute top-1.5 -left-8 h-[7px] w-[7px] rounded-full bg-mist-dim transition-colors duration-300 group-hover:bg-electric-soft sm:-left-10"
+                    aria-hidden="true"
+                  />
+
+                  <div className="-mx-4 rounded-xl border border-transparent px-4 py-3 transition-colors duration-300 group-hover:border-line group-hover:bg-carbon/50">
+                    <div className="flex flex-wrap items-center gap-2 font-mono text-[0.7rem] tracking-[0.12em] text-mist-dim uppercase">
+                      <span className="text-electric-soft">{KIND_LABEL[entry.kind]}</span>
+                      {entry.period ? (
+                        <>
+                          <span aria-hidden="true">·</span>
+                          <span>{entry.period}</span>
+                        </>
+                      ) : null}
+                    </div>
+
+                    <h3 className="mt-2 font-display text-lg font-semibold text-bone">{entry.title}</h3>
+                    <p className="mt-0.5 text-sm text-mist">{entry.org}</p>
+
+                    {entry.detail && entry.detail.length > 0 ? (
+                      <ul className="mt-3 space-y-1.5">
+                        {entry.detail.map((line) => (
+                          <li key={line} className="text-sm leading-relaxed text-mist-dim">
+                            {line}
                           </li>
                         ))}
                       </ul>
                     ) : null}
-                  </li>
-                ))}
-              </ol>
-            </Reveal>
-          ) : null}
-
-          {hasEducation ? (
-            <Reveal delay={0.12}>
-              <h3 className="font-display text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-                Educación
-              </h3>
-              <ul className="mt-6 divide-y divide-zinc-200 dark:divide-zinc-800">
-                {portfolio.education.map((item) => (
-                  <li key={`${item.institution}-${item.title}`} className="py-4 first:pt-0">
-                    <p className="font-medium text-zinc-900 dark:text-zinc-50">{item.title}</p>
-                    <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
-                      {item.institution} · {item.period}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          ) : null}
+                  </div>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
