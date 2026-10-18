@@ -18,12 +18,13 @@ export interface SkillGroup {
   items: string[]
 }
 
-export type ProjectCategory = 'apps' | 'fullstack' | 'landing'
+export type ProjectCategory = 'apps' | 'fullstack' | 'landing' | 'portfolio'
 
 export const PROJECT_CATEGORIES: Record<ProjectCategory, string> = {
   apps: 'Apps & herramientas',
   fullstack: 'Full stack',
   landing: 'Landings',
+  portfolio: 'Portafolios',
 }
 
 export interface Project {
@@ -113,7 +114,7 @@ export const portfolio: PortfolioData = {
       'Tengo experiencia académica y práctica desarrollando proyectos con HTML, CSS, JavaScript, Python y otras tecnologías. Busco seguir creciendo profesionalmente y participar en proyectos donde pueda aportar y adquirir experiencia.',
     ],
     stats: [
-      { label: 'Proyectos publicados', value: '12' },
+      { label: 'Proyectos publicados', value: '18' },
       { label: 'Stack principal', value: 'React' },
       { label: 'Disponibilidad', value: 'Full-time' },
     ],
@@ -127,8 +128,9 @@ export const portfolio: PortfolioData = {
       label: 'Frontend',
       items: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'],
     },
+    { label: 'Animación y 3D', items: ['GSAP', 'Motion', 'Lenis', 'Three.js'] },
     { label: 'Backend & datos', items: ['Node.js', 'Python', 'Rust', 'Supabase', 'APIs REST'] },
-    { label: 'Herramientas', items: ['Electron', 'Git', 'GitHub', 'Vite'] },
+    { label: 'Herramientas', items: ['Electron', 'Git', 'GitHub', 'Vite', 'Vitest', 'Playwright', 'Vercel'] },
   ],
 
   projects: [
@@ -264,6 +266,72 @@ export const portfolio: PortfolioData = {
       href: 'https://hinode-ashy.vercel.app',
       repo: 'https://github.com/kilorito2/hinode',
       image: '/projects/hinode.jpg',
+    },
+    {
+      id: 'armand-de-brignac-brut',
+      name: 'Armand de Brignac · Brut',
+      category: 'landing',
+      description:
+        'Landing conceptual contada con el scroll: la caja laqueada se abre, la botella aparece vestida de oro y las piezas se ensamblan en la foto final. Todo se renderiza en local, sin requests externos. Proyecto de portfolio, no afiliado a la marca.',
+      tags: ['React', 'TypeScript', 'GSAP', 'Three.js', 'Tailwind CSS'],
+      href: 'https://armand-de-brignac-brut.vercel.app',
+      repo: 'https://github.com/kilorito2/armand-de-brignac-brut',
+      image: '/projects/armand-de-brignac-brut.jpg',
+    },
+    {
+      id: 'nocturne',
+      name: 'NOCTURNE',
+      category: 'landing',
+      description:
+        'Concept piece de portfolio (no oficial): landing scrollytelling para un bolso de lujo, con animaciones GSAP, pantalla de carga con contador y assets optimizados vía Cloudinary.',
+      tags: ['React', 'TypeScript', 'GSAP', 'Three.js', 'Tailwind CSS'],
+      href: 'https://nocturne-delta-brown.vercel.app',
+      repo: 'https://github.com/kilorito2/nocturne',
+      image: '/projects/nocturne.jpg',
+    },
+    {
+      id: 'velmont-grand-hotel',
+      name: 'Velmont Grand Hotel',
+      category: 'landing',
+      description:
+        "Sitio de un hotel de lujo en la Côte d'Azur: hero a pantalla completa, buscador de reservas y secciones de estancia, gastronomía, wellness y experiencias.",
+      tags: ['HTML', 'CSS', 'JavaScript'],
+      href: 'https://velmont-grand-hotel.vercel.app',
+      repo: 'https://github.com/kilorito2/velmont-grand-hotel',
+      image: '/projects/velmont-grand-hotel.jpg',
+    },
+    {
+      id: 'altitude-landing',
+      name: 'Altitude',
+      category: 'landing',
+      description:
+        'Landing de una plataforma de datos satelitales y de sensores procesados en tiempo real para clima, agricultura y logística, con hero cinematográfico y sección de arquitectura.',
+      tags: ['Vite', 'JavaScript', 'CSS'],
+      href: 'https://altitude-landing-iota.vercel.app',
+      repo: 'https://github.com/kilorito2/altitude-landing',
+      image: '/projects/altitude-landing.jpg',
+    },
+    {
+      id: 'ia-landing-page',
+      name: 'Programming, Rewritten by AI',
+      category: 'landing',
+      description:
+        'Landing editorial sobre cómo la IA está cambiando la programación, con tipografía pixelada, fondo generativo y secciones de investigación e insights.',
+      tags: ['HTML', 'CSS', 'JavaScript'],
+      href: 'https://ia-landing-page-green.vercel.app',
+      repo: 'https://github.com/kilorito2/ia-landing-page',
+      image: '/projects/ia-landing-page.jpg',
+    },
+    {
+      id: 'portafolio-camarografo',
+      name: 'Emilia Duarte · Foto & Cine',
+      category: 'portfolio',
+      description:
+        'Portafolio para una fotógrafa y camarógrafa: intro con scroll fijado donde el video se reproduce mientras el texto se revela, y galería de trabajos con animaciones GSAP.',
+      tags: ['React', 'GSAP', 'Lenis'],
+      href: 'https://portafolio-camarografo.vercel.app',
+      repo: 'https://github.com/kilorito2/portafolio-camarografo',
+      image: '/projects/portafolio-camarografo.jpg',
     },
   ],
 

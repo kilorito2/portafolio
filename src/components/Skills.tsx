@@ -12,7 +12,7 @@ export function Skills() {
       <div className="container-page">
         <SectionHeading index="03" eyebrow="Stack" title="Tech Stack" description="Con qué trabajo día a día." />
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
           {portfolio.skills.map((group, groupIndex) => (
             <Reveal key={group.label} delay={groupIndex * 0.08}>
               <div className="h-full rounded-2xl border border-line bg-carbon/40 p-6">
